@@ -8,7 +8,9 @@
 
 # IAMMeter HomeBridge Plug-in
 
-Work in Progress
+IAMMeter provide single and three phase power meters which are bi-directional (i.e. capable of measuring both forward / Grid and reverse/ export power). These devices are suited to monitoring power consumption and export for sites equiped with grid connected solar systems.
+
+This project will initially focus on only the single phase meter.
 
 ## About
 
