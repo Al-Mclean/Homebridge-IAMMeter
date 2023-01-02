@@ -8,11 +8,11 @@
 
 # IAMMeter HomeBridge Plug-in
 
-Intro
+Work in Progress
 
 ## About
 
-About
+Work in Progress
 
 ## Install Development Dependencies
 
