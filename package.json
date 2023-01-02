@@ -1,9 +1,9 @@
 {
   "private": true,
-  "displayName": "Plugin Name",
-  "name": "homebridge-plugin-name",
-  "version": "1.0.0",
-  "description": "A short description about what your plugin does.",
+  "displayName": "IAMmeter",
+  "name": "homebridge-plugin-iammeter",
+  "version": "0.1",
+  "description": "Plug-in to integrate IAMMeter into homebridge",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
