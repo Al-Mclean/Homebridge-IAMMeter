@@ -1,6 +1,6 @@
 {
   "private": true,
-  "displayName": "IAMmeter",
+  "displayName": "IAMMeter",
   "name": "homebridge-plugin-iammeter",
   "version": "1.0.1",
   "description": "Plug-in to integrate IAMMeter into homebridge",
