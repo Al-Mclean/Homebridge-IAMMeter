@@ -30,7 +30,7 @@ npm install
 edit your Homebridge's config.json to include the following in the accessories section:
 
         {
-            "accessory": "3EMEnergyMeter",
+            "accessory": "IAMMeter Energy Meter",
             "name": "Energy Meter",
             "ip": "192.168.0.1"         
         },
