@@ -23,3 +23,19 @@ TBA
 ```
 npm install
 ```
+
+
+## Configuration
+
+edit your Homebridge's config.json to include the following in the accessories section:
+
+        {
+            "accessory": "3EMEnergyMeter",
+            "name": "Energy Meter",
+            "ip": "192.168.0.1"         
+        },
+
+* "name"              			The Homekit Accessory Name.
+
+
+
