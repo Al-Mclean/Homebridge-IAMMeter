@@ -32,7 +32,7 @@ edit your Homebridge's config.json to include the following in the accessories s
         {
             "accessory": "IAMMeter Energy Meter",
             "name": "Energy Meter",
-            "ip": "192.168.0.1"         
+            "ip": "192.168.1.44"         
         },
 
 * "name"              			The Homekit Accessory Name.
