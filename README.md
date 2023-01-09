@@ -38,4 +38,8 @@ edit your Homebridge's config.json to include the following in the accessories s
 * "name"              			The Homekit Accessory Name.
 
 
+## Output 
+
+I am currently toying with several ideas in this space. Similar implimentations have used various parameters such as volume and brightness to act as a proxy for power which is currently unsupported in HomeKit. From a functional point of view, I expect the likely use case to be something like "when export power exceeds x, then turn on device Y". Thus some simple virtual indicator (lamp etc) with a pre-defined "on" value may be the most useful way to impliment the functionallity.
+
 
