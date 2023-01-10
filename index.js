@@ -16,14 +16,14 @@ module.exports = function (homebridge) {
 function EnergyMeter (log, config) {
 	this.log = log;
 	this.ip = config["ip"] || "127.0.0.1";
-	this.url = "http://" + this.ip + "/status/emeters?";
+	this.url = "http://" + this.ip + "/status/emeters?";        // *** Update with IAMMeter URL ***
 	
 	this.displayName = config["name"];
-	this.timeout = config["timeout"] || 5000;
-	this.http_method = "GET";
-	this.update_interval = Number(config["update_interval"] || 10000);
+	// this.timeout = config["timeout"] || 5000;
+	// this.http_method = "GET";
+	// this.update_interval = Number(config["update_interval"] || 10000);
 	
-	this.debug_log = config["debug_log"] || false;
+	// this.debug_log = config["debug_log"] || false;
 	
 
 	// internal variables
@@ -115,8 +115,8 @@ function EnergyMeter (log, config) {
   // info
   this.informationService = new Service.AccessoryInformation();
 	this.informationService
-			.setCharacteristic(Characteristic.Manufacturer, "Shelly - produdegr")
-			.setCharacteristic(Characteristic.Model, "Shelly 3EM")
+			.setCharacteristic(Characteristic.Manufacturer, "IAMMeter")
+			.setCharacteristic(Characteristic.Model, "IAMMeter Single Pahse Meter")
 			.setCharacteristic(Characteristic.FirmwareRevision, version)
 			.setCharacteristic(Characteristic.SerialNumber, this.serial);
 
@@ -143,13 +143,14 @@ EnergyMeter.prototype.updateState = function () {
 			method:		this.http_method,
 			timeout:	this.timeout
 		};
-		if (this.debug_log) { this.log('Requesting energy values from Shelly 3EM(EM) ...'); }
-		if (this.auth) {
-			ops.auth = {
-				user: this.auth.user,
-				pass: this.auth.pass
-			};
-		}
+		if (this.debug_log) { this.log('Requesting energy values from IAMMeter ...'); }
+		// if (this.auth) {
+		//	ops.auth = {
+		//		user: this.auth.user,
+		//		pass: this.auth.pass
+		//	};
+		// }
+		
 		request(ops, (error, res, body) => {
 			var json = null;
 			if (error) {
