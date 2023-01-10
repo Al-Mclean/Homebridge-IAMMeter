@@ -10,25 +10,21 @@ module.exports = function (homebridge) {
 	Accessory = homebridge.platformAccessory;
 	UUIDGen = homebridge.hap.uuid;
 	FakeGatoHistoryService = require('fakegato-history')(homebridge);
-	homebridge.registerAccessory("homebridge-3em-energy-meter", "3EMEnergyMeter", EnergyMeter);
+	homebridge.registerAccessory("homebridge-IAMMeter", "IAMMeter", EnergyMeter);
 }
 
 function EnergyMeter (log, config) {
 	this.log = log;
 	this.ip = config["ip"] || "127.0.0.1";
 	this.url = "http://" + this.ip + "/status/emeters?";
-	this.auth = config["auth"];
-	this.name = config["name"];
+	
 	this.displayName = config["name"];
 	this.timeout = config["timeout"] || 5000;
 	this.http_method = "GET";
 	this.update_interval = Number(config["update_interval"] || 10000);
-	this.use_em = config["use_em"] || false;
-	this.use_em_mode = config["use_em_mode"] || 0; 
-	this.negative_handling_mode = config["negative_handling_mode"] || 0; 	
-	this.use_pf = config["use_pf"] || false;
+	
 	this.debug_log = config["debug_log"] || false;
-	this.serial = config.serial || "9000000";
+	
 
 	// internal variables
 	this.waiting_response = false;
