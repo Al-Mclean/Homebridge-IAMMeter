@@ -2,7 +2,7 @@
   "private": false,
   "displayName": "Homebridge IAMMeter Power Meter",
   "name": "homebridge-plugin-iammeter",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Plug-in to integrate IAMMeter into homebridge",
   "license": "Apache-2.0",
   "repository": {
