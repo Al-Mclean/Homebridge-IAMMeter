@@ -146,6 +146,7 @@ EnergyMeter.prototype.updateState = function () {
       method:		this.http_method,
       timeout:	this.timeout,
     };
+    this.log.info('Requesting energy values from IAMMeter ...');
     if (this.debug_log) {
       this.log('Requesting energy values from IAMMeter ...');
     }
@@ -169,10 +170,11 @@ EnergyMeter.prototype.updateState = function () {
           this.activePower = json.Data[3];
           this.importPower = json.Data[4];
           this.exportPower = json.Data[5];
+          this.log.info('Successful http response. [ voltage: ' + this.voltage1.toFixed(0) + 'V, current: ' + this.ampere1.toFixed(1) );
 
 
           if (this.debug_log) {
-            this.log('Successful http response. [ voltage: ' + this.voltage1.toFixed(0) + 'V, current: ' + this.ampere1.toFixed(1) + 'A, consumption: ' + this.powerConsumption.toFixed(0) + 'W, total consumption: ' + this.totalPowerConsumption.toFixed(2) + 'kWh ]');
+            this.log('Successful http response. [ voltage: ' + this.voltage1.toFixed(0) );
           }
         } catch (parseErr) {
           this.log('Error processing data: ' + parseErr.message);
