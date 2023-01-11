@@ -12,7 +12,7 @@ export = (api: API) => {
 };
 
 
-console.log('IAMMeter output test');
+console.log('IAMMeter output test - 1');
 
 
 
