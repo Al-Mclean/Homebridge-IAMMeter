@@ -79,21 +79,8 @@ export class ExamplePlatformAccessory {
 }
 
 
+// New section Starts here
 
-const inherits = require('util').inherits;
-var Service, Characteristic;
-const request = require('request');
-let FakeGatoHistoryService = require('fakegato-history');
-const version = require('./package.json').version;
-
-module.exports = function (homebridge) {
-  Service = homebridge.hap.Service;
-  Characteristic = homebridge.hap.Characteristic;
-  Accessory = homebridge.platformAccessory;
-  UUIDGen = homebridge.hap.uuid;
-  FakeGatoHistoryService = require('fakegato-history')(homebridge);
-  homebridge.registerAccessory('homebridge-IAMMeter', 'IAMMeter', EnergyMeter);
-};
 
 function EnergyMeter (log, config) {
   this.log = log;
@@ -115,9 +102,7 @@ function EnergyMeter (log, config) {
   this.exportPower = 0;
   this.voltage1 = 0;
   this.ampere1 = 0;
-  this.pf0 = 1;
-  this.pf1 = 1;
-  this.pf2 = 1;
+
 
 }
 
@@ -139,12 +124,7 @@ EnergyMeter.prototype.updateState = function () {
     if (this.debug_log) {
       this.log('Requesting energy values from IAMMeter ...');
     }
-    // if (this.auth) {
-    //	ops.auth = {
-    //		user: this.auth.user,
-    //		pass: this.auth.pass
-    //	};
-    // }
+
 
     request(ops, (error, res, body) => {
       let json = null;
@@ -172,36 +152,13 @@ EnergyMeter.prototype.updateState = function () {
       }
       if (!error) {
 
-        resolve(this.powerConsumption, this.totalPowerConsumption, this.voltage1, this.ampere1);
+        //resolve(this.powerConsumption, this.totalPowerConsumption, this.voltage1, this.ampere1);
       } else {
         reject(error);
       }
       this.waiting_response = false;
     });
-  })
-    .then((value_current, value_total, value_voltage1, value_ampere1) => {
-      if (value_current != null) {
-        this.service.getCharacteristic(this._EvePowerConsumption).setValue(value_current, undefined, undefined);
-        //FakeGato
-        this.historyService.addEntry({time: Math.round(new Date().valueOf() / 1000), power: value_current});
-      }
-      if (value_total != null) {
-        this.service.getCharacteristic(this._EveTotalConsumption).setValue(value_total, undefined, undefined);
-      }
-      if (value_voltage1 != null) {
-        this.service.getCharacteristic(this._EveVoltage1).setValue(value_voltage1, undefined, undefined);
-      }
-      if (value_ampere1 != null) {
-        this.service.getCharacteristic(this._EveAmpere1).setValue(value_ampere1, undefined, undefined);
-      }
-      return true;
-    }, (error) => {
-      return error;
-    });
+  });
+
 };
-
-
-
-
-
 

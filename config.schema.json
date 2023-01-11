@@ -1,6 +1,6 @@
 {
-  "pluginAlias": "IAMMeterHomebridgePlugin",
-  "pluginType": "platform",
+  "pluginAlias": "IAMMeter",
+  "pluginType": "accessory",
   "singular": true,
   "schema": {
     "type": "object",
