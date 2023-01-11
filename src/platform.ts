@@ -1,6 +1,8 @@
 import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, Service, Characteristic } from 'homebridge';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { PLATFORM_NAME, PLUGIN_NAME } from './settings';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ExamplePlatformAccessory } from './platformAccessory';
 
 /**
@@ -54,6 +56,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     // EXAMPLE ONLY
     // A real plugin you would discover accessories from the local network, cloud services
     // or a user-defined array in the platform config.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const exampleDevices = [
 
     ];

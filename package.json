@@ -2,7 +2,7 @@
   "private": false,
   "displayName": "IAMMeter",
   "name": "homebridge-plugin-iammeter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Plug-in to integrate IAMMeter into homebridge",
   "license": "Apache-2.0",
   "repository": {
