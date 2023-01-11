@@ -7,3 +7,5 @@ export const PLATFORM_NAME = 'IAMMeter';
  * This must match the name of your plugin as defined the package.json
  */
 export const PLUGIN_NAME = 'homebridge-plugin-iammeter';
+
+// Complete (I think)

@@ -1,4 +1,6 @@
+
 // Device Setup and Discovery go in here
+
 
 import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, Service, Characteristic } from 'homebridge';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

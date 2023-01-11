@@ -80,7 +80,7 @@ export class ExamplePlatformAccessory {
 
 
 // New section Starts here
-
+/*
 
 function EnergyMeter (log, config) {
   this.log = log;
@@ -162,3 +162,4 @@ EnergyMeter.prototype.updateState = function () {
 
 };
 
+*/
