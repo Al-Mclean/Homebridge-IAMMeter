@@ -11,6 +11,6 @@ export = (api: API) => {
   api.registerPlatform(PLATFORM_NAME, ExampleHomebridgePlatform);
 };
 
-console.log('IAMMeter output test - 1');
+// console.log('IAMMeter output test - 1');
 
 // Complete (I think)
