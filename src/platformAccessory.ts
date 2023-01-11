@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 import { ExampleHomebridgePlatform } from './platform';
 
@@ -37,6 +38,8 @@ export class ExamplePlatformAccessory {
     // register handlers for the Brightness Characteristic
     this.service.getCharacteristic(this.platform.Characteristic.Brightness)
       .onSet(this.setBrightness.bind(this));       // SET - bind to the 'setBrightness` method below
+
+    console.log('Done with this bit now ');
 
     let motionDetected = false;
     setInterval(() => {
