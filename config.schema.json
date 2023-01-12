@@ -1,7 +1,7 @@
 {
-  "pluginAlias": "homebridge-plugin-iammeter",
-  "pluginType": "accessory",
-  "singular": false,
+  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginType": "platform",
+  "singular": true,
   "schema": {
     "type": "object",
     "properties": {
@@ -9,15 +9,8 @@
         "title": "Name",
         "type": "string",
         "required": true,
-        "default": "IAMMeter Power meter"
-      },
-      "ip": {
-        "title": "IP Address",
-        "type": "string",
-        "default": "127.0.0.1",
-        "required": true,
-        "format": "ipv4"
-        } 
+        "default": "Example Dynamic Platform"
+      }
     }
   }
 }
