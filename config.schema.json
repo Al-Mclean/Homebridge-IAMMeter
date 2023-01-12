@@ -1,5 +1,5 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginAlias": "homebridge-IAMMeter",
   "pluginType": "platform",
   "singular": true,
   "schema": {
