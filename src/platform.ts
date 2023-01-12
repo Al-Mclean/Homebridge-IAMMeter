@@ -43,7 +43,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     this.log.info('Loading accessory from cache:', accessory.displayName);
 
     // add the restored accessory to the accessories cache so we can track if it has already been registered
-    this.accessories.push(accessory);
+    //this.accessories.push(accessory);
   }
 
   /**
