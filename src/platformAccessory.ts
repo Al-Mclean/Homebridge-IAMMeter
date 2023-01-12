@@ -1,5 +1,7 @@
-import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 
+//   Accessory control logic belongs in here
+
+import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 import { ExampleHomebridgePlatform } from './platform';
 
 /**
