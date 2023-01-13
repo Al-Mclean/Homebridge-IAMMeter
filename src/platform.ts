@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 
 //   Device discovery and setup code goes in here
 
@@ -16,7 +17,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     public readonly api: API,
   ) {
 
-    this.log.info('Finished initializing platform:', this.config.name);
+    this.log.info("Finished initializing platform:", this.config.name);
     this.api.on('didFinishLaunching', () => {
       log.info('Executed didFinishLaunching callback');
       this.discoverDevices();                              // run the method to discover / register your devices as accessories
@@ -53,6 +54,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
         this.log.info('Adding new accessory:', device.exampleDisplayName);
         const accessory = new this.api.platformAccessory(device.exampleDisplayName, uuid);           // create a new accessory
         accessory.context.device = device;                                   // store a copy of the device object in the `accessory.context`
+
         // create the accessory handler for the newly create accessory, this is imported from `platformAccessory.ts`
         new ExamplePlatformAccessory(this, accessory);
 
