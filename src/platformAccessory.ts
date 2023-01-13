@@ -40,15 +40,16 @@ export class ExamplePlatformAccessory {
     }, 10000);
   }
 
+
+
+
   async setOn(value: CharacteristicValue) {
-    // implement your own code to turn your device on/off
-    this.exampleStates.On = value as boolean;
+    this.exampleStates.On = value as boolean;     // implement your own code to turn your device on/off
     this.platform.log.info('Set Characteristic On ->', value);
   }
 
   async getOn(): Promise<CharacteristicValue> {
-    // implement your own code to check if the device is on
-    const isOn = this.exampleStates.On;
+    const isOn = this.exampleStates.On;          // implement your own code to check if the device is on
     this.platform.log.info('Get Characteristic On ->', isOn);
     return isOn;
   }

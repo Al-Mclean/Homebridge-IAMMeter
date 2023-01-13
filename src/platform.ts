@@ -1,4 +1,3 @@
-/* eslint-disable quotes */
 
 //   Device discovery and setup code goes in here
 
@@ -9,7 +8,7 @@ import { ExamplePlatformAccessory } from './platformAccessory';
 export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
   public readonly Service: typeof Service = this.api.hap.Service;
   public readonly Characteristic: typeof Characteristic = this.api.hap.Characteristic;
-  public readonly accessories: PlatformAccessory[] = [];                   // this is used to track restored cached accessories
+  public readonly accessories: PlatformAccessory[] = [];         // this is used to track restored cached accessories
 
   constructor(
     public readonly log: Logger,
@@ -17,12 +16,13 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     public readonly api: API,
   ) {
 
-    this.log.info("Finished initializing platform:", this.config.name);
+    this.log.info('Finished initializing platform:', this.config.name);
     this.api.on('didFinishLaunching', () => {
       log.info('Executed didFinishLaunching callback');
       this.discoverDevices();                              // run the method to discover / register your devices as accessories
     });
   }
+
 
 
   configureAccessory(accessory: PlatformAccessory) {
