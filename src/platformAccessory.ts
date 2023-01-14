@@ -1,8 +1,11 @@
+/* eslint-disable no-console */
 
 //   Accessory control logic belongs in here
 
 import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 import { ExampleHomebridgePlatform } from './platform';
+import got from 'got';
+
 
 export class ExamplePlatformAccessory {
   private service: Service;
@@ -10,6 +13,7 @@ export class ExamplePlatformAccessory {
     On: false,
     Brightness: 100,
   };
+
 
   constructor(
     private readonly platform: ExampleHomebridgePlatform,
@@ -38,6 +42,11 @@ export class ExamplePlatformAccessory {
       this.platform.log.debug('Triggering motionSensorOneService:', motionDetected);
       this.platform.log.debug('Triggering motionSensorTwoService:', !motionDetected);
     }, 10000);
+
+    console.log('About to request Energy Meter Data');
+
+
+    this.energyRequest();
   }
 
 
@@ -59,4 +68,10 @@ export class ExamplePlatformAccessory {
     this.platform.log.info('Set Characteristic Brightness -> ', value);
   }
 
+  async energyRequest(){
+    const url = 'http://192.168.1.123/monitorjson';
+    const response = await got(url);
+
+    console.log(response);
+  }
 }

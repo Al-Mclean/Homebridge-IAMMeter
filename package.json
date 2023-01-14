@@ -2,7 +2,7 @@
   "private": false,
   "displayName": "Homebridge IAMMeter Platform",
   "name": "homebridge-iammeter2",
-  "version": "0.0.9",
+  "version": "0.0.12",
   "description": "Plugin to integrate IAMMeter into Homebridge",
   "license": "Apache-2.0",
   "repository": {
@@ -26,7 +26,9 @@
   "keywords": [
     "homebridge-plugin"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "got": "^12.5.3"
+  },
   "devDependencies": {
     "@types/node": "^16.10.9",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
