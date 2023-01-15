@@ -45,9 +45,11 @@ export class ExamplePlatformAccessory {
     }, 10000);
 
     setInterval(() => {
-      console.log('About to request Energy Meter Data');
+      console.log('Request Energy Meter Data');
       this.energyRequest();
     }, 10000);
+
+
 
   }
 
