@@ -1,11 +1,12 @@
+/* eslint-disable no-var */
 /* eslint-disable no-console */
 
 //   Accessory control logic belongs in here
 
 import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 import { ExampleHomebridgePlatform } from './platform';
-import got from 'got';
 
+import request from 'request';
 
 export class ExamplePlatformAccessory {
   private service: Service;
@@ -43,10 +44,11 @@ export class ExamplePlatformAccessory {
       this.platform.log.debug('Triggering motionSensorTwoService:', !motionDetected);
     }, 10000);
 
-    console.log('About to request Energy Meter Data');
+    setInterval(() => {
+      console.log('About to request Energy Meter Data');
+      this.energyRequest();
+    }, 10000);
 
-
-    this.energyRequest();
   }
 
 
@@ -54,24 +56,35 @@ export class ExamplePlatformAccessory {
 
   async setOn(value: CharacteristicValue) {
     this.exampleStates.On = value as boolean;     // implement your own code to turn your device on/off
-    this.platform.log.info('Set Characteristic On ->', value);
+    this.platform.log.info('1. Set Characteristic On ->', value);
   }
 
   async getOn(): Promise<CharacteristicValue> {
     const isOn = this.exampleStates.On;          // implement your own code to check if the device is on
-    this.platform.log.info('Get Characteristic On ->', isOn);
+    this.platform.log.info('2. Get Characteristic On ->', isOn);
     return isOn;
   }
 
   async setBrightness(value: CharacteristicValue) {
     this.exampleStates.Brightness = value as number;
-    this.platform.log.info('Set Characteristic Brightness -> ', value);
+    this.platform.log.info('3. Set Characteristic Brightness -> ', value);
   }
 
   async energyRequest(){
-    const url = 'http://192.168.1.123/monitorjson';
-    const response = await got(url);
+    // const url = 'http://192.168.1.123/monitorjson';
 
-    console.log(response);
+    var myArr;
+
+    // eslint-disable-next-line prefer-arrow-callback
+    request('http://192.168.1.123/monitorjson', function (error, response, body) {
+      console.error('error:', error);
+      console.log('statusCode:', response && response.statusCode);
+      console.log('Request body:', body);
+      myArr = JSON.parse(body);
+    }).auth('admin', 'admin', false);
+
+    console.log('JSON response:  ', myArr);
   }
 }
+
+
