@@ -1,3 +1,5 @@
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable prefer-const */
 /* eslint-disable no-var */
 /* eslint-disable no-console */
 
@@ -6,7 +8,11 @@
 import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 import { ExampleHomebridgePlatform } from './platform';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import request from 'request';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+var rp = require('request-promise');
+
 
 export class ExamplePlatformAccessory {
   private service: Service;
@@ -46,9 +52,11 @@ export class ExamplePlatformAccessory {
 
     setInterval(() => {
       console.log('Request Energy Meter Data');
-      this.energyRequest();
-    }, 10000);
+      let outpt = this.energyRequest();
+      console.log('Output is: ', outpt);
 
+
+    }, 20000);
 
 
   }
@@ -73,20 +81,28 @@ export class ExamplePlatformAccessory {
   }
 
   async energyRequest(){
+
     // const url = 'http://192.168.1.123/monitorjson';
 
-    var myArr;
-
     // eslint-disable-next-line prefer-arrow-callback
-    request('http://192.168.1.123/monitorjson', function (error, response, body) {
+    let result = await rp('http://192.168.1.123/monitorjson', function (error, response, body) {
       console.error('error:', error);
       console.log('statusCode:', response && response.statusCode);
       console.log('Request body:', body);
-      myArr = JSON.parse(body);
+    //return body;
+    //myArr = JSON.parse(body);
     }).auth('admin', 'admin', false);
 
-    console.log('JSON response:  ', myArr);
+    //let jsresult = await result.body;
+    //let blah = await result.json();
+
+    console.log('JSON response:  ', result);
+
+    return result;
   }
 }
+
+
+
 
 
