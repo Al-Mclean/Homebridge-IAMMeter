@@ -23,8 +23,6 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     });
   }
 
-
-
   configureAccessory(accessory: PlatformAccessory) {
     this.log.info('Loading accessory from cache:', accessory.displayName);
 
@@ -33,11 +31,10 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
   }
 
 
-  discoverDevices() {
-
+  discoverDevices() {                                     // Function to discover devices
     const exampleDevices = [
       {
-        exampleUniqueId: 'IJKL',
+        exampleUniqueId: 'IJKL',                          // Example device
         exampleDisplayName: 'Meter1',
       },
     ];
