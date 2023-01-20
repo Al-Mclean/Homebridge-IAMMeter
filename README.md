@@ -30,10 +30,15 @@ npm install
 edit your Homebridge's config.json to include the following in the accessories section:
 
         {
-            "accessory": "IAMMeter Energy Meter",
-            "name": "Energy Meter",
-            "ip": "192.168.1.44"         
-        },
+            "platform": "IAMMeter",
+            "name": "IAMMeter Power Meter",
+            "meters": [
+                {
+                    "name": "Meter 1",
+                    "ip": "129.127.1.177"
+                }
+            ]
+        }
 
 * "name"              			The Homekit Accessory Name.
 
