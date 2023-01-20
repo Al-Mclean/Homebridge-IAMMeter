@@ -1,18 +1,11 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable prefer-const */
-/* eslint-disable no-var */
+
 /* eslint-disable no-console */
 
 //   Accessory control logic belongs in here
 
 import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
 import { ExampleHomebridgePlatform } from './platform';
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import request from 'request';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-var rp = require('request-promise');
-
+import fetch from 'node-fetch';
 
 export class ExamplePlatformAccessory {
   private service: Service;
@@ -20,7 +13,6 @@ export class ExamplePlatformAccessory {
     On: false,
     Brightness: 100,
   };
-
 
   constructor(
     private readonly platform: ExampleHomebridgePlatform,
@@ -52,15 +44,19 @@ export class ExamplePlatformAccessory {
 
     setInterval(() => {
       console.log('Request Energy Meter Data');
-      let outpt = this.energyRequest();
-      console.log('Output is: ', outpt);
+      this.meterGet().then(
+        (value) => {
+          console.log('Result: ', value);
+        },
+        (error) => {
+          console.log('Error: ', error);
+        },
+      );
 
-
-    }, 20000);
-
+      //console.log('Output is: ', outpt);
+    }, 120000);
 
   }
-
 
 
 
@@ -80,25 +76,14 @@ export class ExamplePlatformAccessory {
     this.platform.log.info('3. Set Characteristic Brightness -> ', value);
   }
 
-  async energyRequest(){
+  async meterGet(){
 
     // const url = 'http://192.168.1.123/monitorjson';
+    const response = await fetch('http://192.168.1.123/monitorjson',
+      {headers: {'Authorization': 'Basic ' + btoa('admin:admin')}});
+    const body = await response.json();
 
-    // eslint-disable-next-line prefer-arrow-callback
-    let result = await rp('http://192.168.1.123/monitorjson', function (error, response, body) {
-      console.error('error:', error);
-      console.log('statusCode:', response && response.statusCode);
-      console.log('Request body:', body);
-    //return body;
-    //myArr = JSON.parse(body);
-    }).auth('admin', 'admin', false);
-
-    //let jsresult = await result.body;
-    //let blah = await result.json();
-
-    console.log('JSON response:  ', result);
-
-    return result;
+    return body;
   }
 }
 
